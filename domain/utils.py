@@ -10,7 +10,4 @@ def extract_data_from_sns_trigger(event):
     data["file_name"] = file_name_sns
     data["id"] = hive_id
 
-    return {
-        "status": 200,
-        "body": data
-    }
+    return data
