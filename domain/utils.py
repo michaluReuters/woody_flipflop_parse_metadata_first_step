@@ -2,6 +2,12 @@ import json
 
 
 def extract_data_from_sns_trigger(event):
+    """
+    This function simply extracts data from incoming event
+
+    :param event: event triggering function
+    :return: required data to be processed
+    """
     event_dict = json.loads(event["Records"][0]["Sns"]["Message"])
 
     data = {}
