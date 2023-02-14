@@ -8,12 +8,13 @@ def extract_data_from_sns_trigger(event):
     :param event: event triggering function
     :return: required data to be processed
     """
-    event_dict = json.loads(event["Records"][0]["Sns"]["Message"])
+    # event_dict = json.loads(event["Records"][0]["Sns"]["Message"]) #UNCOMENT AFTER TESTS
+    event_dict = event["Records"][0]["Sns"]["Message"]
 
     data = {}
     file_name_sns = event_dict["body"]["metadata"].get("name")
     hive_id = event_dict["body"]["metadata"].get("id")
-    data["file_name"] = file_name_sns
     data["id"] = hive_id
+    data["name"] = file_name_sns
 
     return data
